@@ -1,0 +1,128 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:center;
+    position:relative;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center; 
+}
+
+header{
+    background-color: #fff;
+    text-align: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    }
+
+.header_img{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.date{
+    position:relative;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    margin-top: 20px;    
+}
+
+main{
+    position:relative;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+}
+h1{
+    position:relative;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 30px;
+}
+h2,h3,h4,h5{
+    position:relative;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button#save {
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 10px 20px;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#downloadBtn {
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;    
+
+    padding: 10px 20px;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer{
+    position:relative;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+textarea{
+  margin: 10%;
+  width: 75%;
+  height: 100px;
+  font-size:50%;
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  border: double 5px gray;
+  padding: 0;
+}
+
+.event{
+        margin: 3%;
+        width: 95%;
+        height: 230px;
+        font-size:80%;
+        box-shadow: 3px 3px 3px 3px #555;
+        background-color: aqua;
+      }

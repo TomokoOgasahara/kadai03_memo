@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>myMemoPad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>成長するためのWeeklyふりかえりアプリ</h1>
+        <img class="header_img" src="/Users/tomoko/Desktop/Sample/js-learning-sample-master/memo/kadai/img/img2.png" alt="">        
+    </header>
+
+    <label for="date">日付を選択
+    <input type="date" id="date">
+    </label>
+
+    <main style="display: none;">   
+
+        <h2>できごと</h2>
+        <textarea name="event" id="event"></textarea>
+        <h3>Keep</h3>
+        <textarea name="Keep" id="Keep"></textarea>
+        <h4>Problem</h4>
+        <textarea name="Problem" id="Problem"></textarea>
+        <h5>Try</h5>
+        <textarea name="Try" id="Try"></textarea>
+    </main>
+
+    <button id="save">Save        
+    </button>
+    <button id="downloadBtn">CSVダウンロード  
+    </button>
+    
+    <footer><small>今週もお疲れさまでした</small></footer>
+    
+    <script>
+        $("main").fadeIn(1000);
+
+        //Save クリックイベント
+        $("#save").on("click",function(){
+            const dateValue = $("#date").val();
+            const eventValue = $("#event").val();
+            const keepValue = $("#Keep").val();
+            const problemValue = $("#Problem").val();
+            const tryValue = $("#Try").val();
+
+        // 現在の履歴を取得
+        let history = JSON.parse(localStorage.getItem("history")) || [];
+
+         // 新しいエントリを作成
+         const newEntry = {
+                date: dateValue,
+                event: eventValue,
+                Keep: keepValue,
+                Problem: problemValue,
+                Try: tryValue
+            };
+
+        // 履歴に新しいエントリを追加
+        history.push(newEntry);
+
+        // 更新された履歴をローカルストレージに保存
+        localStorage.setItem("history", JSON.stringify(history));
+
+            alert("保存しました");
+        });
+    
+        // ダウンロード機能を追加する
+        function convertToCSV(array) {
+        let str = '';
+
+        const headers = Object.keys(array[0]).join(',') + '\r\n';
+        str += headers;
+
+        array.forEach(item => {
+        let line = '';
+        for (let key in item) {
+            if (line !== '') line += ',';
+            line += item[key];
+        }
+        str += line + '\r\n';
+        });
+
+        return str;
+
+        }
+
+        // CSVをダウンロードする関数
+        function downloadCSV(csv, filename) {
+            const csvFile = new Blob([csv], { type: 'text/csv' });
+            const downloadLink = document.createElement('a');
+
+            downloadLink.download = filename;
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.style.display = 'none';
+            document.body.appendChild(downloadLink);
+
+            downloadLink.click();
+        }
+
+        // ボタンのクリックイベント
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            const history = JSON.parse(localStorage.getItem("history")) || [];
+
+            if (history.length > 0) {
+                const csv = convertToCSV(history);
+                downloadCSV(csv, 'weekly_reflection_history.csv');
+                alert("ダウンロードしました");
+            } else {
+                alert("履歴がありません");
+            }
+
+
+        // ダウンロード完了後にアラートを表示
+        alert("ダウンロードしました");  
+
+        });
+
+        //clear クリックイベント
+        //ページ読み込み：保存データ取得表示
+        //ロード時に表示
+        //※こんなこともできる例
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
